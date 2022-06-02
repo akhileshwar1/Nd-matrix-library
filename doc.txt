@@ -1,0 +1,44 @@
+; ---------------------------------------------------------------------------------------------------
+
+Abstract: Creating a matrix library to deal with all the matrix problems like multiplication, additi
+-on etc. Matrix will be represented as a list of lists but the catch here is that it should be able
+to handle n-dimensional matrices as well.
+
+Definition of a nd-matrix: 
+nd-matrix = nd-1 matrix + nd-matrix.
+
+Examples: 
+2d = list (1d) + 2d
+3d = 2d + 3d
+
+
+Similarly all the operations can be defined recursively as well.
+Ex: 3d X = 2d X + 3d X
+Here, x represents multiplication.
+
+
+
+Representation of matrices:
+The built in data structure we will use is vectors since it provides constant access and update.
+
+
+Grammar:
+
+;; creates an empty matrix with (n1 n2 ...) as dimensions.
+(matrix name n1 n2 ...) -> matrix?        
+n1: number?
+
+;; acceses the element/matrix at (pos1 pos2 ...) in m.
+(matrix-ref m pos1 pos2 ...) -> number?
+m: matrix?
+pos1: number?
+
+;; updates the element/matrix in m at (pos1 pos2 ...).
+(matrix-update m n pos1 pos2 ...) -> number?
+n: any/c? 
+
+;; multiply matrices m1 and m2 using dot products.
+(matrix-mult m1 m2) -> matrix?
+
+;; creating a matrix from a list.
+(list->matrix lst dims name)
