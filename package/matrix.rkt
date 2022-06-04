@@ -1,10 +1,11 @@
 #lang racket
 ; ---------------------------------------------------------------------------------------------------
-(provide matrix
-         matrix-ref
-         list->matrix
-         matrix-update
-         matrix-*)
+(provide (contract-out 
+           [matrix (-> list? vector?)]
+           [matrix-ref (->* (vector? list?) vector?)]
+           [list->matrix (->* (list? list?) vector?)]
+           [matrix-update (->* (vector? list? any/c) void?)]
+           [matrix-* (->* (vector? vector?) vector?)]))
 
 ; ---------------------------------------------------------------------------------------------------
 (require rackunit)
